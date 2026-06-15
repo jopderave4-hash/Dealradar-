@@ -9,16 +9,13 @@ jobs:
   scrape:
     runs-on: ubuntu-latest
     timeout-minutes: 10
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: "20"
-
       - name: Run scraper
         env:
           SUPABASE_URL: https://fdwdzahyeueaiigvazah.supabase.co
