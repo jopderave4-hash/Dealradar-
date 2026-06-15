@@ -1,0 +1,28 @@
+name: DealRadar Scraper
+
+on:
+  schedule:
+    # Elk uur draaien (minuut 0)
+    - cron: "0 * * * *"
+  workflow_dispatch:
+    # Ook handmatig te starten via GitHub
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Run scraper
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+        run: node scraper.js
