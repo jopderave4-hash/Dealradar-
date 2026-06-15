@@ -2,10 +2,8 @@ name: DealRadar Scraper
 
 on:
   schedule:
-    # Elk uur draaien (minuut 0)
     - cron: "0 * * * *"
   workflow_dispatch:
-    # Ook handmatig te starten via GitHub
 
 jobs:
   scrape:
@@ -23,6 +21,6 @@ jobs:
 
       - name: Run scraper
         env:
-          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
-          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+          SUPABASE_URL: https://fdwdzahyeueaiigvazah.supabase.co
+          SUPABASE_KEY: sb_publishable_d4lHwSTc23D4UtIMtXe0bA_EJhI__Ol
         run: node scraper.js
